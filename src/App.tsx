@@ -1,118 +1,75 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
+  Image,
+  ImageSourcePropType,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import DiceOne from '../assets/One.png'     //importing images from assets, an typescript error will surface
+import Dicetwo from '../assets/two.png'     //for that create another file in src directory with name index.d.ts
+import DiceThree from '../assets/Three.png' //inside that file write declare module '*.png'
+import DiceFour from '../assets/Four.png'
+import DiceFive from '../assets/Five.png'
+import DiceSix from '../assets/Six.png'
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+type DiceProps = PropsWithChildren<{
+  imageUrl: ImageSourcePropType
+}>
+// <> or diamond brackets are for generalised syntax
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+const Dice = ({imageUrl}: DiceProps):JSX.Element => {
+  return(
+    <View>
+      <Image style={styles.diceImage} source={imageUrl}/>
     </View>
-  );
+  )
 }
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+  
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View><Text>hello</Text></View>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff2f2'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  diceContainer: {
+    margin: 12,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  diceImage: {
+    width: 200,
+    height: 200
   },
-  highlight: {
+  rollDiceBtnText: {
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    borderWidth: 2,
+    borderRadius: 8,
+    borderColor: '#e5e0ff',
+    fontSize: 16,
+    color: '#8ea7e9',
     fontWeight: '700',
-  },
+    textTransform: 'uppercase'
+  }
+  
 });
 
 export default App;
+
+
+/*
+
+
+
+
+*/
